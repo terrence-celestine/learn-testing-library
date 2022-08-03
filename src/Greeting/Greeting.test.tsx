@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { Greeting } from "./Greeting";
+import { Greeting } from "./index";
 
-test("should first", () => {
+test("should say Hello There", () => {
   render(<Greeting />);
   const greetingText = screen.getByText(/Hello There/i);
   expect(greetingText).toBeInTheDocument();
