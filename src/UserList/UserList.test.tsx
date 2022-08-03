@@ -9,7 +9,7 @@ test("should have 1 user", () => {
 
 test("should add user to list", () => {
   render(<UserList />);
-  const userButton = screen.getByText(/Add User/i);
+  const userButton = screen.getByDisplayValue(/Add User/i);
   fireEvent.click(userButton);
   const addedUser = screen.getByText(/test user/i);
   expect(addedUser).toBeInTheDocument();
