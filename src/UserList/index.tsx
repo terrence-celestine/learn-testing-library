@@ -1,7 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 export const UserList = () => {
-  const [users, setUsers] = useState(["user 1"]);
-  const [myUsers, setMyUsers] = useState([]);
+  type Name = {
+    first: string;
+    last: string;
+  };
+  type User = {
+    gender: string;
+    name: Name;
+  };
+  const [users, setUsers] = useState<String[]>(["user 1"]);
+  const [myUsers, setMyUsers] = useState<User[]>([]);
   const isInitialRender = useRef(true);
   useEffect(() => {
     if (isInitialRender.current) {
@@ -12,7 +20,7 @@ export const UserList = () => {
   }, []);
 
   const getUsers = async () => {
-    await fetch("https://randomuser.me/api?results=1")
+    await fetch("https://randomuser.me/api?results=1&inc=gender,name")
       .then((res: any) => res.json())
       .then((data) => {
         setMyUsers(data.results);
