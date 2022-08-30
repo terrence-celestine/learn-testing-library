@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { UserList } from "./index";
 import { handlers } from "../mocks/handlers";
 import { rest } from "msw";
@@ -9,20 +9,6 @@ const server = setupServer(
     return res(ctx.json({ greeting: "hello there" }));
   })
 );
-
-test("should have 1 user", () => {
-  render(<UserList />);
-  const users = screen.getByText("user 1");
-  expect(users).toBeInTheDocument();
-});
-
-test("should add user to list", () => {
-  render(<UserList />);
-  const userButton = screen.getByDisplayValue(/Add User/i);
-  fireEvent.click(userButton);
-  const addedUser = screen.getByText(/test user/i);
-  expect(addedUser).toBeInTheDocument();
-});
 
 test("handles server error", async () => {
   server.use(
