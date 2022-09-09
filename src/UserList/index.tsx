@@ -23,6 +23,9 @@ export const UserList = () => {
       .then((res: any) => res.json())
       .then((data) => {
         setMyUsers(data.results);
+      })
+      .catch(() => {
+        throw new Error("Boop");
       });
   };
 
