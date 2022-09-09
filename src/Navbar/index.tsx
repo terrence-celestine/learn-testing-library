@@ -1,4 +1,4 @@
-import { useIsTablet } from "../hooks";
+import { useIsTablet } from "../hooks/useIsTablet";
 const NavBar = () => {
   if (useIsTablet()) {
     return (
